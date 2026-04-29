@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @OpenAPIDefinition(
 		info = @Info(
-				title = "API de Productos",
+				title = "API Gestion de Usuarios",
 				version = "1.9x",
 				description = "Mi Documentación manual no generada con Swagger"
 		)

@@ -11,6 +11,8 @@ import es.ediae.master.programacion.gestionusuario.entity.Usuario;
 import es.ediae.master.programacion.gestionusuario.models.UsuarioModel;
 import es.ediae.master.programacion.gestionusuario.repository.UsuarioRepository;
 import es.ediae.master.programacion.gestionusuario.service.IUsuarioService;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 
 
@@ -55,6 +57,10 @@ public List<UsuarioModel> obtenerUsuarios(String authNick, String authPass) {
     @Override
 public UsuarioModel crearUsuario(UsuarioModel model, String authNick, String authPass) {
     // 1. SEGURIDAD: ¿Quién intenta crear?
+    System.out.println("DEBUG - Datos recibidos de Postman:");
+    System.out.println("Nombre: " + model.getNombre());
+    System.out.println("Apellido: " + model.getPrimerApellido());
+    System.out.println("Fecha Nacimiento: " + model.getFechaNacimiento());
     if (usuarioRepository.findByNickUsuarioAndContrasena(authNick, authPass).isEmpty()) {
         return null;
     }
@@ -71,6 +77,11 @@ public UsuarioModel crearUsuario(UsuarioModel model, String authNick, String aut
     nuevaEntidad.setNombre(model.getNombre());
     nuevaEntidad.setNickUsuario(model.getNickUsuario());
     nuevaEntidad.setEsAdmin(model.isEsAdmin());
+    nuevaEntidad.setFecha_hora_creacion(LocalDateTime.now());
+    nuevaEntidad.setContrasena(model.getContrasena());
+    nuevaEntidad.setFecha_nacimiento(model.getFechaNacimiento());
+    nuevaEntidad.setPrimer_apellido(model.getPrimerApellido());
+nuevaEntidad.setSegundo_apellido(model.getSegundoApellido());
 
     // 4. GUARDAR EN DB
     Usuario entidadGuardada = usuarioRepository.save(nuevaEntidad);
@@ -81,6 +92,9 @@ public UsuarioModel crearUsuario(UsuarioModel model, String authNick, String aut
     resultado.setNombre(entidadGuardada.getNombre());
     resultado.setNickUsuario(entidadGuardada.getNickUsuario());
     resultado.setEsAdmin(entidadGuardada.isEsAdmin());
+    resultado.setPrimerApellido(entidadGuardada.getPrimer_apellido());
+    resultado.setSegundoApellido(entidadGuardada.getSegundo_apellido());
+    resultado.setFechaNacimiento(entidadGuardada.getFecha_nacimiento());
 
     return resultado;
 }
@@ -128,6 +142,9 @@ public UsuarioModel actualizarUsuario(Integer id, UsuarioModel model, String aut
     entidad.setEsAdmin(model.isEsAdmin());
     entidad.setContrasena(model.getContrasena());
     entidad.setNickUsuario(model.getNickUsuario());
+    entidad.setPrimer_apellido(model.getPrimerApellido());
+    entidad.setSegundo_apellido(model.getSegundoApellido());
+    entidad.setFecha_nacimiento(model.getFechaNacimiento());
     if (model.getContrasena() != null && !model.getContrasena().isEmpty()) {
         entidad.setContrasena(model.getContrasena());
     }

@@ -1,5 +1,8 @@
 package es.ediae.master.programacion.gestionusuario.models;
 
+import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class UsuarioModel {
    
     private Integer id;
@@ -11,6 +14,8 @@ public class UsuarioModel {
     private Integer idGenero; 
     private Integer idPuesto;
     private String contrasena;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaNacimiento;
 
     public Integer getId() {
         return id;
@@ -65,6 +70,14 @@ public class UsuarioModel {
     }
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     

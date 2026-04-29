@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -18,7 +20,7 @@ public class Usuario {
     @Column(name = "contrasena", nullable = false)
     private String contrasena;
     @Column(name = "fecha_hora_creacion", nullable = false)
-    private Timestamp fecha_hora_creacion;
+    private LocalDateTime fecha_hora_creacion;
     @ManyToOne
     @JoinColumn(name = "genero_id")
     private Genero genero;
@@ -31,7 +33,7 @@ public class Usuario {
     @Column(name = "segundo_apellido")
     private String segundo_apellido;
     @Column(name = "fecha_nacimiento", nullable = false)
-    private Date fecha_nacimiento;
+    private LocalDate fecha_nacimiento;
     @Column(name="hora_desayuno")
     private Time hora_desayuno;
     @ManyToOne
@@ -56,10 +58,10 @@ public class Usuario {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-    public Timestamp getFecha_hora_creacion() {
+    public LocalDateTime getFecha_hora_creacion() {
         return fecha_hora_creacion;
     }
-    public void setFecha_hora_creacion(Timestamp fecha_hora_creacion) {
+    public void setFecha_hora_creacion(LocalDateTime fecha_hora_creacion) {
         this.fecha_hora_creacion = fecha_hora_creacion;
     }
     public Genero getGenero() {
@@ -86,10 +88,10 @@ public class Usuario {
     public void setSegundo_apellido(String segundo_apellido) {
         this.segundo_apellido = segundo_apellido;
     }
-    public Date getFecha_nacimiento() {
+    public LocalDate getFecha_nacimiento() {
         return fecha_nacimiento;
     }
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
+    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
     public Time getHora_desayuno() {

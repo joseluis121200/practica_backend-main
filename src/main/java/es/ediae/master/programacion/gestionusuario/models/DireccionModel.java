@@ -3,7 +3,7 @@ package es.ediae.master.programacion.gestionusuario.models;
 public class DireccionModel {
     private int id;
     private String nombreCalle;
-    private String numeroCalle;
+    private Integer numeroCalle;
     private boolean direccionPrincipal;
     private int idUsuario;
     public int getId() {
@@ -12,22 +12,22 @@ public class DireccionModel {
     public void setId(int id) {
         this.id = id;
     }
-    public String getNombreCalle() {
+    public String getNombre_calle() {
         return nombreCalle;
     }
-    public void setNombreCalle(String nombreCalle) {
+    public void setNombre_calle(String nombreCalle) {
         this.nombreCalle = nombreCalle;
     }
-    public String getNumeroCalle() {
+    public Integer getNumero_calle() {
         return numeroCalle;
     }
-    public void setNumeroCalle(String numeroCalle) {
+    public void setNumero_calle(Integer numeroCalle) {
         this.numeroCalle = numeroCalle;
     }
-    public boolean isDireccionPrincipal() {
+    public boolean isDireccion_principal() {
         return direccionPrincipal;
     }
-    public void setDireccionPrincipal(boolean direccionPrincipal) {
+    public void setDireccion_principal(boolean direccionPrincipal) {
         this.direccionPrincipal = direccionPrincipal;
     }
     public int getIdUsuario() {
