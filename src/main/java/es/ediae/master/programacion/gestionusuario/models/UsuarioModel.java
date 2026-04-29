@@ -10,6 +10,7 @@ public class UsuarioModel {
     private boolean esAdmin;
     private Integer idGenero; 
     private Integer idPuesto;
+    private String contrasena;
 
     public Integer getId() {
         return id;
@@ -59,7 +60,12 @@ public class UsuarioModel {
     public void setIdPuesto(Integer idPuesto) {
         this.idPuesto = idPuesto;
     }
-    
+    public String getContrasena() {
+        return contrasena;
+    }
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
 
     
 }

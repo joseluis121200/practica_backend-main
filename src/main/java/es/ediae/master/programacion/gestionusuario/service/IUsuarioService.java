@@ -10,5 +10,5 @@ public interface IUsuarioService {
     UsuarioModel actualizarUsuario(Integer id, UsuarioModel model, String authNick, String authPass);
     void eliminarUsuario(Integer id, String authNick, String authPass);
     boolean iniciarSesion(String nickUsuario, String contrasena);
-    UsuarioModel obtenerUsuarioPorNick(String nickUsuario, String authNick, String authPass);
+    UsuarioModel obtenerUsuarioPorId(Integer id, String authNick, String authPass);
 }
