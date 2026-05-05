@@ -1,5 +1,6 @@
 package es.ediae.master.programacion.gestionusuario.service.impl;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -11,8 +12,6 @@ import es.ediae.master.programacion.gestionusuario.entity.Usuario;
 import es.ediae.master.programacion.gestionusuario.models.UsuarioModel;
 import es.ediae.master.programacion.gestionusuario.repository.UsuarioRepository;
 import es.ediae.master.programacion.gestionusuario.service.IUsuarioService;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 
 
@@ -38,7 +37,11 @@ public List<UsuarioModel> obtenerUsuarios(String authNick, String authPass) {
         m.setId(u.getId());
         m.setNombre(u.getNombre());
         m.setNickUsuario(u.getNickUsuario());
-        m.setEsAdmin(u.isEsAdmin());
+        m.setEsAdmin(u.getEsAdmin());
+        m.setContrasena(u.getContrasena()); 
+        m.setPrimerApellido(u.getPrimer_apellido());
+        m.setSegundoApellido(u.getSegundo_apellido());
+        m.setFechaNacimiento(u.getFecha_nacimiento());
         modelos.add(m);
     }
 
@@ -47,8 +50,8 @@ public List<UsuarioModel> obtenerUsuarios(String authNick, String authPass) {
 
 
     @Override
-    public boolean iniciarSesion(String nick, String password) {
-        return usuarioRepository.findByNickUsuarioAndContrasena(nick, password).isPresent();
+    public boolean iniciarSesion(String nick, String contrasena) {
+        return usuarioRepository.findByNickUsuarioAndContrasena(nick, contrasena).isPresent();
     }
 
 
@@ -91,7 +94,7 @@ nuevaEntidad.setSegundo_apellido(model.getSegundoApellido());
     resultado.setId(entidadGuardada.getId());
     resultado.setNombre(entidadGuardada.getNombre());
     resultado.setNickUsuario(entidadGuardada.getNickUsuario());
-    resultado.setEsAdmin(entidadGuardada.isEsAdmin());
+    resultado.setEsAdmin(entidadGuardada.getEsAdmin());
     resultado.setPrimerApellido(entidadGuardada.getPrimer_apellido());
     resultado.setSegundoApellido(entidadGuardada.getSegundo_apellido());
     resultado.setFechaNacimiento(entidadGuardada.getFecha_nacimiento());
@@ -112,7 +115,11 @@ public UsuarioModel obtenerUsuarioPorId(Integer id, String authNick, String auth
         model.setId(u.getId());
         model.setNombre(u.getNombre());
         model.setNickUsuario(u.getNickUsuario());
-        model.setEsAdmin(u.isEsAdmin());
+        model.setEsAdmin(u.getEsAdmin());
+        model.setContrasena(u.getContrasena()); 
+        model.setPrimerApellido(u.getPrimer_apellido());
+        model.setSegundoApellido(u.getSegundo_apellido());
+        model.setFechaNacimiento(u.getFecha_nacimiento());
         return model;
     }
     
@@ -155,7 +162,11 @@ public UsuarioModel actualizarUsuario(Integer id, UsuarioModel model, String aut
     resultado.setId(entidadActualizada.getId());
     resultado.setNombre(entidadActualizada.getNombre());
     resultado.setNickUsuario(entidadActualizada.getNickUsuario());
-    resultado.setEsAdmin(entidadActualizada.isEsAdmin());
+    resultado.setEsAdmin(entidadActualizada.getEsAdmin());
+    resultado.setContrasena(entidadActualizada.getContrasena());
+    resultado.setPrimerApellido(entidadActualizada.getPrimer_apellido());
+    resultado.setSegundoApellido(entidadActualizada.getSegundo_apellido());
+    resultado.setFechaNacimiento(entidadActualizada.getFecha_nacimiento());
 
     return resultado;
 }
@@ -181,8 +192,12 @@ public void eliminarUsuario(Integer id, String authNick, String authPass) {
         modelo.setId(entidad.getId());
         modelo.setNombre(entidad.getNombre());
         modelo.setNickUsuario(entidad.getNickUsuario());
-        modelo.setEsAdmin(entidad.isEsAdmin());
-        
+        modelo.setEsAdmin(entidad.getEsAdmin());
+        modelo.setContrasena(entidad.getContrasena());
+        modelo.setPrimerApellido(entidad.getPrimer_apellido());
+        modelo.setSegundoApellido(entidad.getSegundo_apellido());
+        modelo.setFechaNacimiento(entidad.getFecha_nacimiento());
+
         listaDeModelos.add(modelo);
     }
 

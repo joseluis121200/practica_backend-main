@@ -1,15 +1,20 @@
 package es.ediae.master.programacion.gestionusuario.entity;
-import jakarta.persistence.*;
-
-import java.sql.Date;
 import java.sql.Time;
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 
 public class Usuario {
     @Id
@@ -106,7 +111,7 @@ public class Usuario {
     public void setPuesto_trabajo(PuestoDeTrabajo puesto_trabajo) {
         this.puesto_trabajo = puesto_trabajo;
     }
-    public boolean isEsAdmin() {
+    public boolean getEsAdmin() {
         return esAdmin;
     }
     public void setEsAdmin(boolean esAdmin) {

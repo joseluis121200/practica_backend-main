@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UsuarioController {
 
     @Autowired
@@ -26,8 +27,8 @@ public class UsuarioController {
 
     // 1. INICIAR SESIÓN
     @PostMapping("/iniciarSesion")
-    public boolean iniciarSesion(@RequestParam String nick, @RequestParam String pass) {
-        return usuarioService.iniciarSesion(nick, pass);
+    public boolean iniciarSesion(@RequestParam String nick, @RequestParam String contrasena) {
+        return usuarioService.iniciarSesion(nick, contrasena);
     }
 
     // 2. OBTENER TODOS LOS USUARIOS

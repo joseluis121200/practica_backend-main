@@ -1,7 +1,10 @@
 package es.ediae.master.programacion.gestionusuario.models;
 
 import java.time.LocalDate;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import jakarta.persistence.Column;
 
 public class UsuarioModel {
    
@@ -13,6 +16,7 @@ public class UsuarioModel {
     private boolean esAdmin;
     private Integer idGenero; 
     private Integer idPuesto;
+    @Column(name = "contrasena")
     private String contrasena;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechaNacimiento;
